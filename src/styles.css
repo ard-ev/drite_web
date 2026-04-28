@@ -1,0 +1,588 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800;900&display=swap');
+
+:root {
+    --red: #d51e1e;
+    --dark-red: #4d0000;
+    --black: #070707;
+    --white: #ffffff;
+    --soft-white: #f3f3f3;
+    --gray: rgba(255, 255, 255, 0.72);
+    --border: rgba(255, 255, 255, 0.75);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.18;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 4px 4px;
+    mix-blend-mode: overlay;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVBAR */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: 180px 1fr 190px;
+    align-items: center;
+    padding: 28px 6vw;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+}
+
+.logo img {
+    width: 115px;
+    height: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 46px;
+}
+
+nav a {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    color: var(--soft-white);
+    transition: 0.25s ease;
+}
+
+nav a:hover {
+    color: var(--red);
+}
+
+.nav-btn {
+    justify-self: end;
+    padding: 16px 28px;
+    border: 1.5px solid var(--red);
+    color: var(--red);
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    transition: 0.25s ease;
+}
+
+.nav-btn:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 170px 7vw 90px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.86) 0%, rgba(80, 0, 0, 0.72) 46%, rgba(0, 0, 0, 0.35) 100%),
+        linear-gradient(rgba(213, 30, 30, 0.7), rgba(213, 30, 30, 0.88)),
+        url("albania-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid var(--red);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 70% 30%, rgba(213, 30, 30, 0.12), transparent 28%),
+        linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.9));
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 980px;
+}
+
+.hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(64px, 10vw, 150px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.hero h1 span {
+    color: #ff3030;
+}
+
+.hero p {
+    max-width: 670px;
+    margin-top: 28px;
+    color: var(--soft-white);
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.75;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 26px;
+    margin-top: 42px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    min-width: 230px;
+    padding: 20px 34px;
+    border: 1.5px solid var(--border);
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.25s ease;
+}
+
+.btn::after {
+    content: "→";
+    font-size: 26px;
+    margin-left: 24px;
+}
+
+.btn.primary {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.btn.secondary {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.corner {
+    position: absolute;
+    z-index: 3;
+    width: 70px;
+    height: 70px;
+    border-color: var(--white);
+    opacity: 0.85;
+}
+
+.corner-left {
+    top: 155px;
+    left: 6vw;
+    border-left: 4px solid;
+    border-top: 4px solid;
+}
+
+.corner-right {
+    right: 5vw;
+    bottom: 42px;
+    border-right: 4px solid;
+    border-bottom: 4px solid;
+}
+
+/* BLACK SECTION */
+
+.black-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    padding: 72px 6vw;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.94)),
+        url("texture.jpg");
+    border-bottom: 2px solid rgba(213, 30, 30, 0.7);
+}
+
+.section-title span,
+.small-title {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: var(--red);
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-title span::after,
+.small-title::after {
+    content: "";
+    display: inline-block;
+    width: 110px;
+    height: 2px;
+    margin-left: 14px;
+    vertical-align: middle;
+    background: var(--red);
+}
+
+.section-title h2,
+.red-section h2,
+.partner-text h2,
+.benefits h2,
+.contact h2 {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    line-height: 1.05;
+}
+
+.section-title h2 {
+    font-size: clamp(42px, 5vw, 72px);
+}
+
+.section-title p {
+    margin-top: 22px;
+    max-width: 520px;
+    color: var(--gray);
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-card {
+    padding: 30px 28px;
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+    min-height: 280px;
+}
+
+.feature-card .icon {
+    color: var(--red);
+    font-size: 54px;
+    margin-bottom: 24px;
+}
+
+.feature-card h3 {
+    color: var(--red);
+    font-size: 18px;
+    line-height: 1.45;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.feature-card p {
+    margin-top: 18px;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* RED SECTION */
+
+.red-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    padding: 90px 6vw;
+    background:
+        linear-gradient(rgba(213, 30, 30, 0.92), rgba(120, 0, 0, 0.92)),
+        url("albania-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    color: var(--black);
+}
+
+.red-section h2 {
+    font-size: clamp(42px, 6vw, 86px);
+    color: #070707;
+}
+
+.red-section p {
+    align-self: end;
+    max-width: 650px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 22px;
+    line-height: 1.7;
+}
+
+/* PARTNER SECTION */
+
+.partner-section {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 70px;
+    padding: 100px 6vw;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.95), rgba(90, 0, 0, 0.8)),
+        url("albania-bg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.partner-text h2 {
+    font-size: clamp(54px, 8vw, 112px);
+}
+
+.partner-text h2 span {
+    color: var(--red);
+}
+
+.partner-text p {
+    max-width: 680px;
+    margin-top: 28px;
+    color: var(--soft-white);
+    font-size: 22px;
+    line-height: 1.75;
+}
+
+.partner-box {
+    align-self: center;
+    padding: 48px;
+    border: 1.5px solid var(--border);
+    border-radius: 48px;
+    background: rgba(40, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.partner-box h3 {
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    margin-bottom: 28px;
+}
+
+.partner-box ul {
+    list-style: none;
+}
+
+.partner-box li {
+    padding: 15px 0;
+    color: var(--soft-white);
+    font-size: 19px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.partner-box li::before {
+    content: "✦";
+    color: var(--red);
+    margin-right: 14px;
+}
+
+/* BENEFITS */
+
+.benefits {
+    padding: 90px 6vw;
+    background: #0a0a0a;
+}
+
+.benefits h2 {
+    text-align: center;
+    font-size: clamp(42px, 6vw, 82px);
+    margin-bottom: 48px;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1.5px solid var(--border);
+    border-radius: 48px;
+    overflow: hidden;
+    background: rgba(80, 0, 0, 0.35);
+}
+
+.benefit-grid div {
+    padding: 40px 32px;
+    border-right: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.benefit-grid div:last-child {
+    border-right: none;
+}
+
+.benefit-grid h3 {
+    color: var(--red);
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.benefit-grid p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* CONTACT */
+
+.contact {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+    padding: 100px 6vw;
+    background: var(--red);
+    color: var(--black);
+}
+
+.contact h2 {
+    font-size: clamp(48px, 7vw, 98px);
+}
+
+.contact p {
+    margin-top: 20px;
+    max-width: 680px;
+    color: var(--white);
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+.contact-card {
+    padding: 36px;
+    border: 1.5px solid var(--white);
+    border-radius: 42px;
+    background: rgba(0, 0, 0, 0.88);
+    color: var(--white);
+}
+
+.contact-card p {
+    margin: 18px 0;
+    color: var(--white);
+    font-weight: 800;
+    font-size: 22px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 28px 6vw;
+    background: #050505;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--gray);
+    text-align: center;
+    font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+    .navbar {
+        grid-template-columns: 140px 1fr;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    nav {
+        justify-content: flex-end;
+        gap: 24px;
+    }
+
+    .black-section,
+    .red-section,
+    .partner-section,
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid,
+    .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 22px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .logo img {
+        width: 96px;
+    }
+
+    .hero {
+        padding: 145px 24px 70px;
+    }
+
+    .hero h1 {
+        font-size: 62px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .black-section,
+    .red-section,
+    .partner-section,
+    .benefits,
+    .contact {
+        padding: 64px 24px;
+    }
+
+    .feature-grid,
+    .benefit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card,
+    .benefit-grid div {
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .partner-box,
+    .contact-card {
+        border-radius: 30px;
+        padding: 28px;
+    }
+
+    .corner {
+        display: none;
+    }
+}
