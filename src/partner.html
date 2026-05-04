@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="sq">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bëhu partner | Dritë Guide</title>
+    <meta name="description" content="Apliko për ta bërë biznesin tënd pjesë të rrjetit Dritë Guide." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="partner-page">
+    <header class="navbar">
+        <a class="brand logo-brand" href="index.html" aria-label="Dritë Guide home">
+            <img src="./img/logo1.png" alt="Dritë Guide logo" />
+        </a>
+
+        <nav aria-label="Primary navigation">
+            <a href="index.html#about" data-i18n="navAbout">Rreth nesh</a>
+            <a href="index.html#why" data-i18n="navWhy">Pse Shqipëria</a>
+            <a href="index.html#partners" data-i18n="navPartners">Partnerë</a>
+            <a href="index.html#contact" data-i18n="navContact">Kontakt</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="lang-switch" type="button" aria-label="Switch language" data-lang-toggle>
+                <span data-lang-label>EN</span>
+            </button>
+            <a class="nav-btn" href="index.html" data-i18n="backButton">Kthehu</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="partner-hero">
+            <div class="reveal">
+                <p class="eyebrow" data-i18n="pageEyebrow">Partnerët</p>
+                <h1 data-i18n="pageTitle">Bëhu pjesë e Dritë Guide.</h1>
+                <p class="lead" data-i18n="pageLead">
+                    Na dërgo disa të dhëna bazë për biznesin tënd. Ekipi ynë do të të kontaktojë për hapat e radhës.
+                </p>
+            </div>
+
+            <form class="partner-form reveal delay-1"
+                action="mailto:info@driteguide.com?subject=Partner Application - Dritë Guide" method="post"
+                enctype="text/plain">
+                <label for="full-name" data-i18n="nameLabel">Emri dhe mbiemri</label>
+                <input id="full-name" name="Emri dhe mbiemri" type="text" placeholder="Shkruaj emrin tënd"
+                    data-i18n-placeholder="namePlaceholder" required />
+
+                <label for="business-name" data-i18n="businessLabel">Emri i biznesit</label>
+                <input id="business-name" name="Emri i biznesit" type="text" placeholder="Shkruaj emrin e biznesit"
+                    data-i18n-placeholder="businessPlaceholder" required />
+
+                <label for="business-type" data-i18n="typeLabel">Lloji i biznesit</label>
+                <select id="business-type" name="Lloji i biznesit" required>
+                    <option value="" data-i18n="typePlaceholder">Zgjidh një kategori</option>
+                    <option value="Hotel" data-i18n="typeHotel">Hotel</option>
+                    <option value="Restaurant" data-i18n="typeRestaurant">Restorant</option>
+                    <option value="Coffee shop" data-i18n="typeCoffee">Kafene</option>
+                    <option value="Bar" data-i18n="typeBar">Bar</option>
+                </select>
+
+                <button class="btn primary" type="submit" data-i18n="submitButton">Dërgo aplikimin</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <span data-i18n="footerBrand">© 2026 Dritë Guide</span>
+        <span data-i18n="footerLine">Ndiq dritën tënde.</span>
+    </footer>
+
+    <script>
+        const translations = {
+            sq: {
+                navAbout: "Rreth nesh",
+                navWhy: "Pse Shqipëria",
+                navPartners: "Partnerë",
+                navContact: "Kontakt",
+                backButton: "Kthehu",
+                pageEyebrow: "Partnerët",
+                pageTitle: "Bëhu pjesë e Dritë Guide.",
+                pageLead: "Na dërgo disa të dhëna bazë për biznesin tënd. Ekipi ynë do të të kontaktojë për hapat e radhës.",
+                nameLabel: "Emri dhe mbiemri",
+                namePlaceholder: "Shkruaj emrin tënd",
+                businessLabel: "Emri i biznesit",
+                businessPlaceholder: "Shkruaj emrin e biznesit",
+                typeLabel: "Lloji i biznesit",
+                typePlaceholder: "Zgjidh një kategori",
+                typeHotel: "Hotel",
+                typeRestaurant: "Restorant",
+                typeCoffee: "Kafene",
+                typeBar: "Bar",
+                submitButton: "Dërgo aplikimin",
+                footerBrand: "© 2026 Dritë Guide",
+                footerLine: "Ndiq dritën tënde."
+            },
+            en: {
+                navAbout: "About",
+                navWhy: "Why Albania",
+                navPartners: "Partners",
+                navContact: "Contact",
+                backButton: "Back",
+                pageEyebrow: "Partners",
+                pageTitle: "Become part of Dritë Guide.",
+                pageLead: "Send us a few basic details about your business. Our team will contact you with the next steps.",
+                nameLabel: "Full name",
+                namePlaceholder: "Enter your name",
+                businessLabel: "Business name",
+                businessPlaceholder: "Enter the business name",
+                typeLabel: "Business type",
+                typePlaceholder: "Choose a category",
+                typeHotel: "Hotel",
+                typeRestaurant: "Restaurant",
+                typeCoffee: "Coffee shop",
+                typeBar: "Bar",
+                submitButton: "Send application",
+                footerBrand: "© 2026 Dritë Guide",
+                footerLine: "Follow your light."
+            }
+        };
+
+        const languageButton = document.querySelector("[data-lang-toggle]");
+        const languageLabel = document.querySelector("[data-lang-label]");
+
+        function setLanguage(language) {
+            document.documentElement.lang = language === "sq" ? "sq" : "en";
+            document.querySelectorAll("[data-i18n]").forEach((element) => {
+                const key = element.dataset.i18n;
+                element.textContent = translations[language][key];
+            });
+            document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+                const key = element.dataset.i18nPlaceholder;
+                element.placeholder = translations[language][key];
+            });
+            languageLabel.textContent = language === "sq" ? "EN" : "SQ";
+            localStorage.setItem("drite-language", language);
+        }
+
+        languageButton.addEventListener("click", () => {
+            const nextLanguage = document.documentElement.lang === "sq" ? "en" : "sq";
+            setLanguage(nextLanguage);
+        });
+
+        setLanguage(localStorage.getItem("drite-language") || "sq");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.18 });
+
+        document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    </script>
+</body>
+
+</html>

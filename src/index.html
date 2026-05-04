@@ -4,170 +4,324 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dritë Guide</title>
+    <title>Dritë Guide | Travel Guide Albania</title>
+    <meta name="description"
+        content="Dritë Guide lidh turistët me vende autentike, biznese lokale dhe përvoja të zgjedhura në Shqipëri." />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-
     <header class="navbar">
-        <div class="logo">
-            <img src="./img/logo2.png" alt="Dritë Guide Logo" />
-        </div>
+        <a class="brand logo-brand" href="#top" aria-label="Dritë Guide home">
+            <img src="./img/logo1.png" alt="Dritë Guide logo" />
+        </a>
 
-        <nav>
-            <a href="#about">Rreth nesh</a>
-            <a href="#albania">Pse Shqipëria</a>
-            <a href="#partners">Për partnerët</a>
-            <a href="#contact">Kontakt</a>
+        <nav aria-label="Primary navigation">
+            <a href="#about" data-i18n="navAbout">Rreth nesh</a>
+            <a href="#why" data-i18n="navWhy">Pse Shqipëria</a>
+            <a href="#partners" data-i18n="navPartners">Partnerë</a>
+            <a href="#contact" data-i18n="navContact">Kontakt</a>
         </nav>
 
-        <a href="mailto:support@driteguide.com?subject=Partnership Request - Dritë Guide&body=Hello Dritë Guide Team,%0A%0AI am interested in becoming a partner.%0A%0ABusiness Name:%0AType (Restaurant, Hotel, etc.):%0ACity:%0APhone:%0AWebsite:%0A%0AAdditional Information:%0A%0AThank you."
-            class="nav-btn">
-            Bëhu partner
-        </a>
+        <div class="nav-actions">
+            <button class="lang-switch" type="button" aria-label="Switch language" data-lang-toggle>
+                <span data-lang-label>EN</span>
+            </button>
+            <a class="nav-btn" href="partner.html" data-i18n="partnerCta">Bëhu partner</a>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="corner corner-left"></div>
-        <div class="corner corner-right"></div>
+    <main id="top">
+        <section class="hero">
+            <div class="hero-copy reveal">
+                <p class="eyebrow" data-i18n="heroEyebrow">Agjenci udhëtimi · Shqipëri</p>
+                <h1 data-i18n="heroTitle">Zbulo Shqipërinë me dritë të qartë.</h1>
+                <p class="lead" data-i18n="heroLead">
+                    Dritë Guide ndihmon udhëtarët të gjejnë restorante, hotele, vende lokale dhe përvoja
+                    autentike pa zhurmë, pa konfuzion, vetëm rekomandime të zgjedhura me kujdes.
+                </p>
 
-        <div class="hero-content">
-            <h1>
-                Zbulo.<br />
-                Lidhu.<br />
-                <span>Përjeto Shqipërinë.</span>
-            </h1>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#about" data-i18n="heroPrimary">Eksploro guidën</a>
+                    <a class="btn ghost" href="#partners" data-i18n="heroSecondary">Puno me ne</a>
+                </div>
+            </div>
 
-            <p>
-                Dritë Guide është guida digjitale që lidh turistët me më të mirat e Shqipërisë:
-                vende autentike, biznese lokale dhe përvoja që mbeten gjatë.
+            <div class="hero-mark reveal delay-1" aria-hidden="true">
+                <img src="./img/logo1.png" alt="" />
+            </div>
+        </section>
+
+        <section id="about" class="section split">
+            <div class="section-heading reveal">
+                <p class="eyebrow" data-i18n="aboutEyebrow">Rreth nesh</p>
+                <h2 data-i18n="aboutTitle">Një mënyrë më e pastër për të udhëtuar.</h2>
+            </div>
+
+            <div class="section-body reveal delay-1">
+                <p data-i18n="aboutBody">
+                    Ne ndërtojmë një guidë digjitale për njerëzit që duan të përjetojnë Shqipërinë me më
+                    shumë besim: ku të hanë, ku të qëndrojnë, çfarë të vizitojnë dhe cilat biznese ia vlejnë.
+                </p>
+                <div class="stats">
+                    <div>
+                        <strong data-i18n="statOneTitle">Të zgjedhura</strong>
+                        <span data-i18n="statOneBody">vende me kujdes</span>
+                    </div>
+                    <div>
+                        <strong data-i18n="statTwoTitle">Vendase</strong>
+                        <span data-i18n="statTwoBody">biznese shqiptare</span>
+                    </div>
+                    <div>
+                        <strong data-i18n="statThreeTitle">Të qarta</strong>
+                        <span data-i18n="statThreeBody">udhëzim i lehtë</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section feature-band">
+            <article class="feature reveal">
+                <span>01</span>
+                <h3 data-i18n="featureOneTitle">Guidë për turistët</h3>
+                <p data-i18n="featureOneBody">Rekomandime të shkurtra, të besueshme dhe të lehta për t'u përdorur gjatë udhëtimit.</p>
+            </article>
+
+            <article class="feature reveal delay-1">
+                <span>02</span>
+                <h3 data-i18n="featureTwoTitle">Dukshmëri për bizneset</h3>
+                <p data-i18n="featureTwoBody">Prezencë profesionale për restorante, hotele, bare, transport dhe përvoja lokale.</p>
+            </article>
+
+            <article class="feature reveal delay-2">
+                <span>03</span>
+                <h3 data-i18n="featureThreeTitle">Identitet shqiptar</h3>
+                <p data-i18n="featureThreeBody">Një platformë që e prezanton vendin me shije moderne dhe respekt për kulturën lokale.</p>
+            </article>
+        </section>
+
+        <section id="why" class="section red-panel">
+            <div class="reveal">
+                <p class="eyebrow dark" data-i18n="whyEyebrow">Pse Shqipëria?</p>
+                <h2 data-i18n="whyTitle">Sepse destinacionet më të mira shpesh fshihen në detaje.</h2>
+            </div>
+            <p class="reveal delay-1" data-i18n="whyBody">
+                Nga bregdeti te qytetet historike, nga kuzhina tradicionale te mikpritja, Shqipëria ka
+                shumë për të treguar. Dritë e bën këtë histori më të lehtë për t'u gjetur.
             </p>
+        </section>
 
-            <div class="hero-buttons">
-                <a href="#about" class="btn primary">Për turistët</a>
-                <a href="#partners" class="btn secondary">Për partnerët</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="black-section">
-        <div class="section-title">
-            <span>Rreth nesh</span>
-            <h2>Kush jemi<br />dhe çfarë bëjmë</h2>
-            <p>
-                Ne jemi një ekip që beson se Shqipëria meriton të prezantohet më qartë,
-                më bukur dhe më profesionalisht. Dritë Guide ndihmon udhëtarët të gjejnë
-                vende të vlefshme dhe ndihmon bizneset lokale të shihen nga njerëzit e duhur.
-            </p>
-        </div>
-
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">☀</div>
-                <h3>Promovojmë më të mirën e Shqipërisë</h3>
-                <p>Vendosim në pah vende, kultura, ushqim dhe përvoja autentike.</p>
+        <section id="partners" class="section partners">
+            <div class="partner-copy reveal">
+                <p class="eyebrow" data-i18n="partnersEyebrow">Për partnerët</p>
+                <h2 data-i18n="partnersTitle">Bëhu pjesë e rrjetit Dritë.</h2>
+                <p data-i18n="partnersBody">
+                    Nëse ke një biznes turistik në Shqipëri, ne të ndihmojmë të shfaqesh para udhëtarëve
+                    që kërkojnë vende cilësore para dhe gjatë udhëtimit të tyre.
+                </p>
+                <a class="btn primary" href="partner.html" data-i18n="partnersButton">Apliko si partner</a>
             </div>
 
-            <div class="feature-card">
-                <div class="icon">🤝</div>
-                <h3>Mbështesim bizneset lokale</h3>
-                <p>U japim bizneseve një prezencë më të fortë digjitale.</p>
+            <div class="partner-list reveal delay-1">
+                <h3 data-i18n="categoriesTitle">Kategoritë</h3>
+                <ul>
+                    <li data-i18n="categoryOne">Restorante</li>
+                    <li data-i18n="categoryTwo">Kafene</li>
+                    <li data-i18n="categoryThree">Hotele dhe akomodime</li>
+                    <li data-i18n="categoryFour">Bare dhe ambiente nate</li>
+                    <li data-i18n="categoryFive">Taksi dhe transport</li>
+                    <li data-i18n="categorySix">Përvoja lokale</li>
+                    <li data-i18n="categorySeven">Vende të veçanta</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section benefits">
+            <div class="section-heading reveal">
+                <p class="eyebrow" data-i18n="benefitsEyebrow">Avantazhet</p>
+                <h2 data-i18n="benefitsTitle">Pse bizneset zgjedhin Dritë?</h2>
             </div>
 
-            <div class="feature-card">
-                <div class="icon">👥</div>
-                <h3>Krijojmë lidhje të vërteta</h3>
-                <p>Lidhim turistët me vende dhe njerëz që ia vlejnë vërtet.</p>
+            <div class="benefit-grid">
+                <div class="benefit reveal">
+                    <h3 data-i18n="benefitOneTitle">Më shumë dukshmëri</h3>
+                    <p data-i18n="benefitOneBody">Shfaq biznesin te udhëtarët që po kërkojnë rekomandime reale.</p>
+                </div>
+                <div class="benefit reveal delay-1">
+                    <h3 data-i18n="benefitTwoTitle">Prezencë e pastër</h3>
+                    <p data-i18n="benefitTwoBody">Një faqe e kuruar me informacion të qartë, pamje moderne dhe kontakt të lehtë.</p>
+                </div>
+                <div class="benefit reveal delay-2">
+                    <h3 data-i18n="benefitThreeTitle">Besim më i madh</h3>
+                    <p data-i18n="benefitThreeBody">Rekomandimet e zgjedhura ndihmojnë turistët të vendosin më shpejt.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="reveal">
+                <p class="eyebrow dark" data-i18n="contactEyebrow">Kontakt</p>
+                <h2 data-i18n="contactTitle">Le ta bëjmë Shqipërinë më të lehtë për t'u zbuluar.</h2>
             </div>
 
-            <div class="feature-card">
-                <div class="icon">◎</div>
-                <h3>Udhëtojmë drejt së ardhmes</h3>
-                <p>Ndërtojmë një platformë moderne për turizmin shqiptar.</p>
+            <div class="contact-card reveal delay-1">
+                <a href="mailto:info@driteguide.com">info@driteguide.com</a>
+                <a href="https://www.driteguide.com">www.driteguide.com</a>
+                <span>@driteguide</span>
             </div>
-        </div>
-    </section>
-
-    <section id="albania" class="red-section">
-        <div>
-            <span class="small-title">Pse Shqipëria?</span>
-            <h2>Sepse Shqipëria nuk është vetëm destinacion. Është përvojë.</h2>
-        </div>
-
-        <p>
-            Nga bregdeti te qytetet historike, nga ushqimi tradicional te mikpritja lokale,
-            Shqipëria ka shumë për të treguar. Problemi? Shumë vende të mira nuk janë ende
-            të dukshme online. Këtu hyn Dritë Guide.
-        </p>
-    </section>
-
-    <section id="partners" class="partner-section">
-        <div class="partner-text">
-            <span class="small-title">Për partnerët</span>
-            <h2>Partnerët tanë.<br />Përvoja e tyre.<br /><span>Udhëtarët tanë.</span></h2>
-            <p>
-                Nëse ke restoran, bar, kafe, hotel apo një biznes turistik në Shqipëri,
-                Dritë Guide të ndihmon të arrish turistë ndërkombëtarë para se ata të zgjedhin destinacionin e tyre.
-            </p>
-        </div>
-
-        <div class="partner-box">
-            <h3>Kategoritë që përfshijmë:</h3>
-            <ul>
-                <li>Restorante</li>
-                <li>Bare & Lounge</li>
-                <li>Kafe</li>
-                <li>Hotele & Akomodime</li>
-                <li>Taxi & Transport</li>
-                <li>Hidden gems</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="benefits">
-        <h2>Pse të bëhesh partner?</h2>
-
-        <div class="benefit-grid">
-            <div>
-                <h3>Rrit dukshmërinë</h3>
-                <p>Promovo biznesin tënd te udhëtarët që kërkojnë vende cilësore.</p>
-            </div>
-
-            <div>
-                <h3>Besueshmëri</h3>
-                <p>Shfaqesh në një platformë moderne, të pastër dhe profesionale.</p>
-            </div>
-
-            <div>
-                <h3>Më shumë klientë</h3>
-                <p>Arrij njerëz të rinj dhe rrit rezervimet, vizitat dhe kontaktet.</p>
-            </div>
-
-            <div>
-                <h3>Promovim i plotë</h3>
-                <p>Përfiton nga prezenca jonë digjitale dhe rrjetet sociale.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div>
-            <h2>Bëhu pjesë e rrjetit tonë tani!</h2>
-            <p>Bashkëpuno me ne dhe bëhu pjesë e udhëtarëve që vizitojnë Shqipërinë.</p>
-        </div>
-
-        <div class="contact-card">
-            <p>✉ info@driteguide.com</p>
-            <p>◎ @driteguide</p>
-            <p>🌐 www.driteguide.com</p>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2026 Dritë Guide. Follow your Light.</p>
+        <span data-i18n="footerBrand">© 2026 Dritë Guide</span>
+        <span data-i18n="footerLine">Ndiq dritën tënde.</span>
     </footer>
 
+    <script>
+        const translations = {
+            sq: {
+                navAbout: "Rreth nesh",
+                navWhy: "Pse Shqipëria",
+                navPartners: "Partnerë",
+                navContact: "Kontakt",
+                partnerCta: "Bëhu partner",
+                heroEyebrow: "Agjenci udhëtimi · Shqipëri",
+                heroTitle: "Zbulo Shqipërinë me dritë të qartë.",
+                heroLead: "Dritë Guide ndihmon udhëtarët të gjejnë restorante, hotele, vende lokale dhe përvoja autentike pa zhurmë, pa konfuzion, vetëm rekomandime të zgjedhura me kujdes.",
+                heroPrimary: "Eksploro guidën",
+                heroSecondary: "Puno me ne",
+                heroMark: "Guida jote në Shqipëri",
+                aboutEyebrow: "Rreth nesh",
+                aboutTitle: "Një mënyrë më e pastër për të udhëtuar.",
+                aboutBody: "Ne ndërtojmë një guidë digjitale për njerëzit që duan të përjetojnë Shqipërinë me më shumë besim: ku të hanë, ku të qëndrojnë, çfarë të vizitojnë dhe cilat biznese ia vlejnë.",
+                statOneTitle: "Të zgjedhura",
+                statOneBody: "vende me kujdes",
+                statTwoTitle: "Vendase",
+                statTwoBody: "biznese shqiptare",
+                statThreeTitle: "Të qarta",
+                statThreeBody: "udhëzim i lehtë",
+                featureOneTitle: "Guidë për turistët",
+                featureOneBody: "Rekomandime të shkurtra, të besueshme dhe të lehta për t'u përdorur gjatë udhëtimit.",
+                featureTwoTitle: "Dukshmëri për bizneset",
+                featureTwoBody: "Prezencë profesionale për restorante, hotele, bare, transport dhe përvoja lokale.",
+                featureThreeTitle: "Identitet shqiptar",
+                featureThreeBody: "Një platformë që e prezanton vendin me shije moderne dhe respekt për kulturën lokale.",
+                whyEyebrow: "Pse Shqipëria?",
+                whyTitle: "Sepse destinacionet më të mira shpesh fshihen në detaje.",
+                whyBody: "Nga bregdeti te qytetet historike, nga kuzhina tradicionale te mikpritja, Shqipëria ka shumë për të treguar. Dritë e bën këtë histori më të lehtë për t'u gjetur.",
+                partnersEyebrow: "Për partnerët",
+                partnersTitle: "Bëhu pjesë e rrjetit Dritë.",
+                partnersBody: "Nëse ke një biznes turistik në Shqipëri, ne të ndihmojmë të shfaqesh para udhëtarëve që kërkojnë vende cilësore para dhe gjatë udhëtimit të tyre.",
+                partnersButton: "Apliko si partner",
+                categoriesTitle: "Kategoritë",
+                categoryOne: "Restorante",
+                categoryTwo: "Kafene",
+                categoryThree: "Hotele dhe akomodime",
+                categoryFour: "Bare dhe ambiente nate",
+                categoryFive: "Taksi dhe transport",
+                categorySix: "Përvoja lokale",
+                categorySeven: "Vende të veçanta",
+                benefitsEyebrow: "Avantazhet",
+                benefitsTitle: "Pse bizneset zgjedhin Dritë?",
+                benefitOneTitle: "Më shumë dukshmëri",
+                benefitOneBody: "Shfaq biznesin te udhëtarët që po kërkojnë rekomandime reale.",
+                benefitTwoTitle: "Prezencë e pastër",
+                benefitTwoBody: "Një faqe e kuruar me informacion të qartë, pamje moderne dhe kontakt të lehtë.",
+                benefitThreeTitle: "Besim më i madh",
+                benefitThreeBody: "Rekomandimet e zgjedhura ndihmojnë turistët të vendosin më shpejt.",
+                contactEyebrow: "Kontakt",
+                contactTitle: "Le ta bëjmë Shqipërinë më të lehtë për t'u zbuluar.",
+                footerBrand: "© 2026 Dritë Guide",
+                footerLine: "Ndiq dritën tënde."
+            },
+            en: {
+                navAbout: "About",
+                navWhy: "Why Albania",
+                navPartners: "Partners",
+                navContact: "Contact",
+                partnerCta: "Become a partner",
+                heroEyebrow: "Travel guide agency · Albania",
+                heroTitle: "Discover Albania with a clearer guide.",
+                heroLead: "Dritë Guide helps travelers find restaurants, hotels, local places, and authentic experiences without noise or confusion, only carefully selected recommendations.",
+                heroPrimary: "Explore the guide",
+                heroSecondary: "Work with us",
+                heroMark: "Your guide in Albania",
+                aboutEyebrow: "About",
+                aboutTitle: "A cleaner way to travel.",
+                aboutBody: "We are building a digital guide for people who want to experience Albania with more confidence: where to eat, where to stay, what to visit, and which local businesses are worth their time.",
+                statOneTitle: "Curated",
+                statOneBody: "carefully chosen places",
+                statTwoTitle: "Local",
+                statTwoBody: "Albanian businesses",
+                statThreeTitle: "Simple",
+                statThreeBody: "easy guidance",
+                featureOneTitle: "Guide for travelers",
+                featureOneBody: "Short, trusted, and easy recommendations for people already on the move.",
+                featureTwoTitle: "Visibility for businesses",
+                featureTwoBody: "A professional presence for restaurants, hotels, bars, transport, and local experiences.",
+                featureThreeTitle: "Albanian identity",
+                featureThreeBody: "A platform that presents the country with modern taste and respect for local culture.",
+                whyEyebrow: "Why Albania?",
+                whyTitle: "Because the best destinations are often hidden in the details.",
+                whyBody: "From the coast to historic cities, from traditional food to hospitality, Albania has a lot to show. Dritë makes that story easier to find.",
+                partnersEyebrow: "For partners",
+                partnersTitle: "Join the Dritë network.",
+                partnersBody: "If you have a tourism business in Albania, we help you appear in front of travelers who are looking for quality places before and during their trip.",
+                partnersButton: "Apply as partner",
+                categoriesTitle: "Categories",
+                categoryOne: "Restaurants",
+                categoryTwo: "Coffee shops",
+                categoryThree: "Hotels and stays",
+                categoryFour: "Bars and lounges",
+                categoryFive: "Taxi and transport",
+                categorySix: "Local experiences",
+                categorySeven: "Hidden gems",
+                benefitsEyebrow: "Benefits",
+                benefitsTitle: "Why businesses choose Dritë?",
+                benefitOneTitle: "More visibility",
+                benefitOneBody: "Show your business to travelers looking for real recommendations.",
+                benefitTwoTitle: "Clean presence",
+                benefitTwoBody: "A curated page with clear information, modern visuals, and easy contact.",
+                benefitThreeTitle: "More trust",
+                benefitThreeBody: "Selected recommendations help travelers decide faster.",
+                contactEyebrow: "Contact",
+                contactTitle: "Let’s make Albania easier to discover.",
+                footerBrand: "© 2026 Dritë Guide",
+                footerLine: "Follow your light."
+            }
+        };
+
+        const languageButton = document.querySelector("[data-lang-toggle]");
+        const languageLabel = document.querySelector("[data-lang-label]");
+
+        function setLanguage(language) {
+            document.documentElement.lang = language === "sq" ? "sq" : "en";
+            document.querySelectorAll("[data-i18n]").forEach((element) => {
+                const key = element.dataset.i18n;
+                element.textContent = translations[language][key];
+            });
+            languageLabel.textContent = language === "sq" ? "EN" : "SQ";
+            localStorage.setItem("drite-language", language);
+        }
+
+        languageButton.addEventListener("click", () => {
+            const nextLanguage = document.documentElement.lang === "sq" ? "en" : "sq";
+            setLanguage(nextLanguage);
+        });
+
+        setLanguage(localStorage.getItem("drite-language") || "sq");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.18 });
+
+        document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    </script>
 </body>
 
 </html>
