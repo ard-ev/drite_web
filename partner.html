@@ -41,24 +41,21 @@
                 </p>
             </div>
 
-            <form class="partner-form reveal delay-1" action="https://formsubmit.co/support@driteguide.com"
-                method="post" accept-charset="UTF-8">
-                <input type="hidden" name="_subject" value="Partner Application - Dritë Guide" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="true" />
-                <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off"
+            <form class="partner-form reveal delay-1" action="/api/partner" method="post" accept-charset="UTF-8"
+                data-partner-form>
+                <input class="form-honeypot" type="text" name="website" tabindex="-1" autocomplete="off"
                     aria-hidden="true" />
 
                 <label for="full-name" data-i18n="nameLabel">Emri dhe mbiemri</label>
-                <input id="full-name" name="Full name" type="text" placeholder="Shkruaj emrin tënd"
+                <input id="full-name" name="fullName" type="text" placeholder="Shkruaj emrin tënd"
                     data-i18n-placeholder="namePlaceholder" autocomplete="name" maxlength="120" required />
 
                 <label for="business-name" data-i18n="businessLabel">Emri i biznesit</label>
-                <input id="business-name" name="Business name" type="text" placeholder="Shkruaj emrin e biznesit"
+                <input id="business-name" name="businessName" type="text" placeholder="Shkruaj emrin e biznesit"
                     data-i18n-placeholder="businessPlaceholder" autocomplete="organization" maxlength="140" required />
 
                 <label for="business-type" data-i18n="typeLabel">Lloji i biznesit</label>
-                <select id="business-type" name="Business type" required>
+                <select id="business-type" name="businessType" required>
                     <option value="" data-i18n="typePlaceholder">Zgjidh një kategori</option>
                     <option value="Hotel" data-i18n="typeHotel">Hotel</option>
                     <option value="Restaurant" data-i18n="typeRestaurant">Restorant</option>
@@ -68,19 +65,20 @@
                 </select>
 
                 <label for="phone-number" data-i18n="phoneLabel">Numri i telefonit</label>
-                <input id="phone-number" name="Phone number" type="tel" placeholder="+355 69 123 4567"
+                <input id="phone-number" name="phone" type="tel" placeholder="+355 69 123 4567"
                     data-i18n-placeholder="phonePlaceholder" autocomplete="tel" inputmode="tel" maxlength="32"
                     pattern="^[0-9+() .-]{7,32}$" required />
 
                 <label for="email" data-i18n="emailLabel">Email</label>
-                <input id="email" name="Email" type="email" placeholder="email@example.com"
+                <input id="email" name="email" type="email" placeholder="email@example.com"
                     data-i18n-placeholder="emailPlaceholder" autocomplete="email" maxlength="160" required />
 
                 <label for="message" data-i18n="messageLabel">Mesazhi</label>
-                <textarea id="message" name="Message" placeholder="Shkruaj çfarë dëshiron të ndash me ne"
+                <textarea id="message" name="message" placeholder="Shkruaj çfarë dëshiron të ndash me ne"
                     data-i18n-placeholder="messagePlaceholder" maxlength="1200" rows="5" required></textarea>
 
                 <button class="btn primary" type="submit" data-i18n="submitButton">Dërgo aplikimin</button>
+                <p class="form-status" data-form-status role="status" aria-live="polite"></p>
             </form>
         </section>
     </main>
@@ -119,6 +117,9 @@
                 messageLabel: "Mesazhi",
                 messagePlaceholder: "Shkruaj çfarë dëshiron të ndash me ne",
                 submitButton: "Dërgo aplikimin",
+                sendingStatus: "Duke u dërguar...",
+                successStatus: "Aplikimi u dërgua me sukses. Do të të kontaktojmë së shpejti.",
+                errorStatus: "Nuk u dërgua. Provo përsëri ose na shkruaj direkt te support@driteguide.com.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Ndiq dritën tënde."
             },
@@ -149,6 +150,9 @@
                 messageLabel: "Message",
                 messagePlaceholder: "Write anything else you want to share",
                 submitButton: "Send application",
+                sendingStatus: "Sending...",
+                successStatus: "Application sent successfully. We will contact you soon.",
+                errorStatus: "Could not send. Please try again or email support@driteguide.com directly.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Follow your light."
             }
@@ -177,6 +181,54 @@
         });
 
         setLanguage(localStorage.getItem("drite-language") || "sq");
+
+        const partnerForm = document.querySelector("[data-partner-form]");
+        const formStatus = document.querySelector("[data-form-status]");
+
+        partnerForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (!partnerForm.reportValidity()) {
+                return;
+            }
+
+            const language = document.documentElement.lang === "sq" ? "sq" : "en";
+            const submitButton = partnerForm.querySelector("button[type='submit']");
+            const formData = new FormData(partnerForm);
+
+            if (formData.get("website")) {
+                partnerForm.reset();
+                return;
+            }
+
+            submitButton.disabled = true;
+            formStatus.textContent = translations[language].sendingStatus;
+            formStatus.dataset.state = "sending";
+
+            try {
+                const response = await fetch(partnerForm.action, {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData))
+                });
+
+                if (!response.ok) {
+                    throw new Error("Form submission failed");
+                }
+
+                partnerForm.reset();
+                formStatus.textContent = translations[language].successStatus;
+                formStatus.dataset.state = "success";
+            } catch (error) {
+                formStatus.textContent = translations[language].errorStatus;
+                formStatus.dataset.state = "error";
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {

@@ -492,6 +492,27 @@ h2 {
     margin-top: 18px;
 }
 
+.partner-form button:disabled {
+    cursor: wait;
+    opacity: 0.72;
+}
+
+.form-status {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    min-height: 22px;
+}
+
+.form-status[data-state="success"] {
+    color: #146c2e;
+}
+
+.form-status[data-state="error"] {
+    color: var(--red-dark);
+}
+
 footer {
     align-items: center;
     background: var(--black);
