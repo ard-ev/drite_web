@@ -458,7 +458,8 @@ h2 {
 }
 
 .partner-form input,
-.partner-form select {
+.partner-form select,
+.partner-form textarea {
     appearance: none;
     background: var(--paper);
     border: 1px solid var(--line);
@@ -469,10 +470,22 @@ h2 {
     width: 100%;
 }
 
+.partner-form textarea {
+    line-height: 1.6;
+    min-height: 140px;
+    padding: 14px 16px;
+    resize: vertical;
+}
+
 .partner-form input:focus,
-.partner-form select:focus {
+.partner-form select:focus,
+.partner-form textarea:focus {
     border-color: var(--red);
     outline: 2px solid rgba(223, 23, 27, 0.16);
+}
+
+.form-honeypot {
+    display: none;
 }
 
 .partner-form button {

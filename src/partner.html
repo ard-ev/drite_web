@@ -40,25 +40,44 @@
                 </p>
             </div>
 
-            <form class="partner-form reveal delay-1"
-                action="mailto:info@driteguide.com?subject=Partner Application - Dritë Guide" method="post"
-                enctype="text/plain">
+            <form class="partner-form reveal delay-1" action="https://formsubmit.co/support@driteguide.com"
+                method="post" accept-charset="UTF-8">
+                <input type="hidden" name="_subject" value="Partner Application - Dritë Guide" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="true" />
+                <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off"
+                    aria-hidden="true" />
+
                 <label for="full-name" data-i18n="nameLabel">Emri dhe mbiemri</label>
-                <input id="full-name" name="Emri dhe mbiemri" type="text" placeholder="Shkruaj emrin tënd"
-                    data-i18n-placeholder="namePlaceholder" required />
+                <input id="full-name" name="Full name" type="text" placeholder="Shkruaj emrin tënd"
+                    data-i18n-placeholder="namePlaceholder" autocomplete="name" maxlength="120" required />
 
                 <label for="business-name" data-i18n="businessLabel">Emri i biznesit</label>
-                <input id="business-name" name="Emri i biznesit" type="text" placeholder="Shkruaj emrin e biznesit"
-                    data-i18n-placeholder="businessPlaceholder" required />
+                <input id="business-name" name="Business name" type="text" placeholder="Shkruaj emrin e biznesit"
+                    data-i18n-placeholder="businessPlaceholder" autocomplete="organization" maxlength="140" required />
 
                 <label for="business-type" data-i18n="typeLabel">Lloji i biznesit</label>
-                <select id="business-type" name="Lloji i biznesit" required>
+                <select id="business-type" name="Business type" required>
                     <option value="" data-i18n="typePlaceholder">Zgjidh një kategori</option>
                     <option value="Hotel" data-i18n="typeHotel">Hotel</option>
                     <option value="Restaurant" data-i18n="typeRestaurant">Restorant</option>
                     <option value="Coffee shop" data-i18n="typeCoffee">Kafene</option>
                     <option value="Bar" data-i18n="typeBar">Bar</option>
+                    <option value="Other" data-i18n="typeOther">Tjetër</option>
                 </select>
+
+                <label for="phone-number" data-i18n="phoneLabel">Numri i telefonit</label>
+                <input id="phone-number" name="Phone number" type="tel" placeholder="+355 69 123 4567"
+                    data-i18n-placeholder="phonePlaceholder" autocomplete="tel" inputmode="tel" maxlength="32"
+                    pattern="^[0-9+() .-]{7,32}$" required />
+
+                <label for="email" data-i18n="emailLabel">Email</label>
+                <input id="email" name="Email" type="email" placeholder="email@example.com"
+                    data-i18n-placeholder="emailPlaceholder" autocomplete="email" maxlength="160" required />
+
+                <label for="message" data-i18n="messageLabel">Mesazhi</label>
+                <textarea id="message" name="Message" placeholder="Shkruaj çfarë dëshiron të ndash me ne"
+                    data-i18n-placeholder="messagePlaceholder" maxlength="1200" rows="5" required></textarea>
 
                 <button class="btn primary" type="submit" data-i18n="submitButton">Dërgo aplikimin</button>
             </form>
@@ -91,6 +110,13 @@
                 typeRestaurant: "Restorant",
                 typeCoffee: "Kafene",
                 typeBar: "Bar",
+                typeOther: "Tjetër",
+                phoneLabel: "Numri i telefonit",
+                phonePlaceholder: "+355 69 123 4567",
+                emailLabel: "Email",
+                emailPlaceholder: "email@example.com",
+                messageLabel: "Mesazhi",
+                messagePlaceholder: "Shkruaj çfarë dëshiron të ndash me ne",
                 submitButton: "Dërgo aplikimin",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Ndiq dritën tënde."
@@ -114,6 +140,13 @@
                 typeRestaurant: "Restaurant",
                 typeCoffee: "Coffee shop",
                 typeBar: "Bar",
+                typeOther: "Other",
+                phoneLabel: "Phone number",
+                phonePlaceholder: "+355 69 123 4567",
+                emailLabel: "Email",
+                emailPlaceholder: "email@example.com",
+                messageLabel: "Message",
+                messagePlaceholder: "Write anything else you want to share",
                 submitButton: "Send application",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Follow your light."
