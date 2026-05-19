@@ -397,38 +397,6 @@ h2 {
     color: var(--muted);
 }
 
-.contact {
-    align-items: end;
-    background: var(--red);
-    color: var(--black);
-    display: grid;
-    gap: clamp(32px, 6vw, 80px);
-    grid-template-columns: 1fr minmax(280px, 420px);
-    padding: clamp(72px, 10vw, 130px) clamp(20px, 5vw, 72px);
-}
-
-.contact-card {
-    background: var(--black);
-    color: var(--white);
-    display: grid;
-    gap: 1px;
-    padding: 10px 0;
-}
-
-.contact-card a,
-.contact-card span {
-    border-bottom: 1px solid var(--line-light);
-    color: var(--white);
-    display: block;
-    font-weight: 800;
-    padding: 18px 24px;
-    word-break: break-word;
-}
-
-.contact-card span {
-    border-bottom: 0;
-}
-
 .contact-page {
     min-height: 100vh;
 }
@@ -542,7 +510,6 @@ footer {
     .split,
     .red-panel,
     .business,
-    .contact,
     .contact-hero {
         grid-template-columns: 1fr;
     }
