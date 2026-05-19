@@ -117,8 +117,8 @@
                 messagePlaceholder: "Shkruaj çfarë dëshiron të ndash me ne",
                 submitButton: "Dërgo aplikimin",
                 savingStatus: "Duke u ruajtur...",
-                successStatus: "Aplikimi u ruajt me sukses në këtë pajisje.",
-                errorStatus: "Aplikimi nuk u ruajt. Provo përsëri.",
+                successStatus: "Aplikimi u ruajt dhe dokumenti u shkarkua me sukses.",
+                errorStatus: "Dokumenti i aplikimit nuk u krijua. Provo përsëri.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Ndiq dritën tënde."
             },
@@ -150,8 +150,8 @@
                 messagePlaceholder: "Write anything else you want to share",
                 submitButton: "Send application",
                 savingStatus: "Saving...",
-                successStatus: "Application saved successfully on this device.",
-                errorStatus: "Application could not be saved. Please try again.",
+                successStatus: "Application saved and document downloaded successfully.",
+                errorStatus: "Application document could not be created. Please try again.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Follow your light."
             }
@@ -213,6 +213,35 @@
 
             savedApplications.push(savedApplication);
             localStorage.setItem(applicationsStorageKey, JSON.stringify(savedApplications));
+
+            return savedApplication;
+        }
+
+        function downloadApplicationDocument(application) {
+            const documentLines = [
+                "Drite Guide Partner Application",
+                "================================",
+                "",
+                `Submitted at: ${application.submittedAt}`,
+                `Full name: ${application.fullName}`,
+                `Business name: ${application.businessName}`,
+                `Business type: ${application.businessType}`,
+                `Phone: ${application.phone}`,
+                `Email: ${application.email}`,
+                "",
+                "Message:",
+                application.message
+            ];
+            const documentBlob = new Blob([documentLines.join("\n")], { type: "text/plain;charset=utf-8" });
+            const documentUrl = URL.createObjectURL(documentBlob);
+            const downloadLink = document.createElement("a");
+
+            downloadLink.href = documentUrl;
+            downloadLink.download = `${application.id}.txt`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+            URL.revokeObjectURL(documentUrl);
         }
 
         partnerForm.addEventListener("submit", (event) => {
@@ -236,7 +265,8 @@
             formStatus.dataset.state = "saving";
 
             try {
-                saveApplication(formData);
+                const savedApplication = saveApplication(formData);
+                downloadApplicationDocument(savedApplication);
                 partnerForm.reset();
                 formStatus.textContent = translations[language].successStatus;
                 formStatus.dataset.state = "success";
