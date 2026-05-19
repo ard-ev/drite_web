@@ -446,16 +446,29 @@ h2 {
     background: var(--black);
     border-top: 4px solid var(--red);
     display: grid;
-    gap: 1px;
-    padding: clamp(24px, 4vw, 42px);
+    padding: clamp(18px, 3vw, 28px);
 }
 
 .contact-method {
-    background: rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--line-light);
     color: var(--white);
     display: grid;
     gap: 10px;
-    padding: 22px 0;
+    padding: 22px clamp(8px, 1.8vw, 18px);
+    transition: background 180ms ease, color 180ms ease;
+}
+
+.contact-method:first-child {
+    padding-top: 8px;
+}
+
+.contact-method:last-child {
+    border-bottom: 0;
+    padding-bottom: 8px;
+}
+
+a.contact-method:hover {
+    background: rgba(223, 23, 27, 0.18);
 }
 
 .contact-method span {
