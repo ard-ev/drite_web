@@ -41,7 +41,8 @@
                 </p>
             </div>
 
-            <form class="partner-form reveal delay-1" accept-charset="UTF-8" data-partner-form>
+            <form class="partner-form reveal delay-1" action="/api/partner" method="post" accept-charset="UTF-8"
+                data-partner-form>
                 <input class="form-honeypot" type="text" name="website" tabindex="-1" autocomplete="off"
                     aria-hidden="true" />
 
@@ -117,8 +118,8 @@
                 messagePlaceholder: "Shkruaj çfarë dëshiron të ndash me ne",
                 submitButton: "Dërgo aplikimin",
                 savingStatus: "Duke u ruajtur...",
-                successStatus: "Aplikimi u ruajt dhe dokumenti u shkarkua me sukses.",
-                errorStatus: "Dokumenti i aplikimit nuk u krijua. Provo përsëri.",
+                successStatus: "Aplikimi u ruajt me sukses si dokument në server.",
+                errorStatus: "Aplikimi nuk u ruajt. Sigurohu që faqja po hapet nga serveri lokal dhe provo përsëri.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Ndiq dritën tënde."
             },
@@ -150,8 +151,8 @@
                 messagePlaceholder: "Write anything else you want to share",
                 submitButton: "Send application",
                 savingStatus: "Saving...",
-                successStatus: "Application saved and document downloaded successfully.",
-                errorStatus: "Application document could not be created. Please try again.",
+                successStatus: "Application saved successfully as a document on the server.",
+                errorStatus: "Application could not be saved. Make sure the site is running from the local server and try again.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Follow your light."
             }
@@ -183,68 +184,8 @@
 
         const partnerForm = document.querySelector("[data-partner-form]");
         const formStatus = document.querySelector("[data-form-status]");
-        const applicationsStorageKey = "drite-partner-applications";
 
-        function readSavedApplications() {
-            const savedApplications = localStorage.getItem(applicationsStorageKey);
-
-            if (!savedApplications) {
-                return [];
-            }
-
-            try {
-                const applications = JSON.parse(savedApplications);
-                return Array.isArray(applications) ? applications : [];
-            } catch (error) {
-                return [];
-            }
-        }
-
-        function saveApplication(formData) {
-            const application = Object.fromEntries(formData.entries());
-            delete application.website;
-
-            const savedApplications = readSavedApplications();
-            const savedApplication = {
-                ...application,
-                id: `application-${Date.now()}`,
-                submittedAt: new Date().toISOString()
-            };
-
-            savedApplications.push(savedApplication);
-            localStorage.setItem(applicationsStorageKey, JSON.stringify(savedApplications));
-
-            return savedApplication;
-        }
-
-        function downloadApplicationDocument(application) {
-            const documentLines = [
-                "Drite Guide Partner Application",
-                "================================",
-                "",
-                `Submitted at: ${application.submittedAt}`,
-                `Full name: ${application.fullName}`,
-                `Business name: ${application.businessName}`,
-                `Business type: ${application.businessType}`,
-                `Phone: ${application.phone}`,
-                `Email: ${application.email}`,
-                "",
-                "Message:",
-                application.message
-            ];
-            const documentBlob = new Blob([documentLines.join("\n")], { type: "text/plain;charset=utf-8" });
-            const documentUrl = URL.createObjectURL(documentBlob);
-            const downloadLink = document.createElement("a");
-
-            downloadLink.href = documentUrl;
-            downloadLink.download = `${application.id}.txt`;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            downloadLink.remove();
-            URL.revokeObjectURL(documentUrl);
-        }
-
-        partnerForm.addEventListener("submit", (event) => {
+        partnerForm.addEventListener("submit", async (event) => {
             event.preventDefault();
 
             if (!partnerForm.reportValidity()) {
@@ -265,8 +206,22 @@
             formStatus.dataset.state = "saving";
 
             try {
-                const savedApplication = saveApplication(formData);
-                downloadApplicationDocument(savedApplication);
+                const application = Object.fromEntries(formData.entries());
+                delete application.website;
+
+                const response = await fetch(partnerForm.action, {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(application)
+                });
+
+                if (!response.ok) {
+                    throw new Error("Application was not saved");
+                }
+
                 partnerForm.reset();
                 formStatus.textContent = translations[language].successStatus;
                 formStatus.dataset.state = "success";
