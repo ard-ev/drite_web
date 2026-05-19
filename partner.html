@@ -41,8 +41,7 @@
                 </p>
             </div>
 
-            <form class="partner-form reveal delay-1" action="/api/partner" method="post" accept-charset="UTF-8"
-                data-partner-form>
+            <form class="partner-form reveal delay-1" accept-charset="UTF-8" data-partner-form>
                 <input class="form-honeypot" type="text" name="website" tabindex="-1" autocomplete="off"
                     aria-hidden="true" />
 
@@ -117,9 +116,9 @@
                 messageLabel: "Mesazhi",
                 messagePlaceholder: "Shkruaj çfarë dëshiron të ndash me ne",
                 submitButton: "Dërgo aplikimin",
-                sendingStatus: "Duke u dërguar...",
-                successStatus: "Aplikimi u dërgua me sukses. Do të të kontaktojmë së shpejti.",
-                errorStatus: "Nuk u dërgua. Provo përsëri ose na shkruaj direkt te support@driteguide.com.",
+                savingStatus: "Duke u ruajtur...",
+                successStatus: "Aplikimi u ruajt me sukses në këtë pajisje.",
+                errorStatus: "Aplikimi nuk u ruajt. Provo përsëri.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Ndiq dritën tënde."
             },
@@ -150,9 +149,9 @@
                 messageLabel: "Message",
                 messagePlaceholder: "Write anything else you want to share",
                 submitButton: "Send application",
-                sendingStatus: "Sending...",
-                successStatus: "Application sent successfully. We will contact you soon.",
-                errorStatus: "Could not send. Please try again or email support@driteguide.com directly.",
+                savingStatus: "Saving...",
+                successStatus: "Application saved successfully on this device.",
+                errorStatus: "Application could not be saved. Please try again.",
                 footerBrand: "© 2026 Dritë Guide",
                 footerLine: "Follow your light."
             }
@@ -184,8 +183,39 @@
 
         const partnerForm = document.querySelector("[data-partner-form]");
         const formStatus = document.querySelector("[data-form-status]");
+        const applicationsStorageKey = "drite-partner-applications";
 
-        partnerForm.addEventListener("submit", async (event) => {
+        function readSavedApplications() {
+            const savedApplications = localStorage.getItem(applicationsStorageKey);
+
+            if (!savedApplications) {
+                return [];
+            }
+
+            try {
+                const applications = JSON.parse(savedApplications);
+                return Array.isArray(applications) ? applications : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function saveApplication(formData) {
+            const application = Object.fromEntries(formData.entries());
+            delete application.website;
+
+            const savedApplications = readSavedApplications();
+            const savedApplication = {
+                ...application,
+                id: `application-${Date.now()}`,
+                submittedAt: new Date().toISOString()
+            };
+
+            savedApplications.push(savedApplication);
+            localStorage.setItem(applicationsStorageKey, JSON.stringify(savedApplications));
+        }
+
+        partnerForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
             if (!partnerForm.reportValidity()) {
@@ -202,23 +232,11 @@
             }
 
             submitButton.disabled = true;
-            formStatus.textContent = translations[language].sendingStatus;
-            formStatus.dataset.state = "sending";
+            formStatus.textContent = translations[language].savingStatus;
+            formStatus.dataset.state = "saving";
 
             try {
-                const response = await fetch(partnerForm.action, {
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(Object.fromEntries(formData))
-                });
-
-                if (!response.ok) {
-                    throw new Error("Form submission failed");
-                }
-
+                saveApplication(formData);
                 partnerForm.reset();
                 formStatus.textContent = translations[language].successStatus;
                 formStatus.dataset.state = "success";
