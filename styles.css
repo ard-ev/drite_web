@@ -196,7 +196,8 @@ h2 {
 
 .lead,
 .section-body > p,
-.partner-copy > p,
+.business-copy > p,
+.contact-copy > p,
 .red-panel > p {
     color: var(--muted);
     font-size: clamp(17px, 2vw, 21px);
@@ -316,14 +317,14 @@ h2 {
 
 .feature h3,
 .benefit h3,
-.partner-list h3 {
+.business-list h3 {
     font-size: clamp(22px, 2.2vw, 30px);
     line-height: 1.1;
 }
 
 .feature p,
 .benefit p,
-.partner-list li {
+.business-list li {
     color: rgba(255, 255, 255, 0.68);
     line-height: 1.65;
     margin-top: 18px;
@@ -342,35 +343,35 @@ h2 {
     color: rgba(0, 0, 0, 0.72);
 }
 
-.partners {
+.business {
     background: var(--paper);
     display: grid;
     gap: clamp(40px, 6vw, 88px);
     grid-template-columns: 1fr minmax(300px, 460px);
 }
 
-.partner-copy p {
+.business-copy p {
     margin-top: 24px;
     max-width: 650px;
 }
 
-.partner-copy .btn {
+.business-copy .btn {
     margin-top: 34px;
 }
 
-.partner-list {
+.business-list {
     align-self: center;
     background: var(--black);
     color: var(--white);
     padding: clamp(28px, 4vw, 44px);
 }
 
-.partner-list ul {
+.business-list ul {
     list-style: none;
     margin-top: 18px;
 }
 
-.partner-list li {
+.business-list li {
     border-top: 1px solid var(--line-light);
     margin-top: 0;
     padding: 15px 0;
@@ -428,11 +429,11 @@ h2 {
     border-bottom: 0;
 }
 
-.partner-page {
+.contact-page {
     min-height: 100vh;
 }
 
-.partner-hero {
+.contact-hero {
     align-items: start;
     display: grid;
     gap: clamp(36px, 6vw, 88px);
@@ -441,76 +442,35 @@ h2 {
     padding: 150px clamp(20px, 5vw, 72px) clamp(72px, 8vw, 110px);
 }
 
-.partner-form {
-    background: var(--white);
+.contact-details {
+    background: var(--black);
     border-top: 4px solid var(--red);
     display: grid;
-    gap: 14px;
+    gap: 1px;
     padding: clamp(24px, 4vw, 42px);
 }
 
-.partner-form label {
-    font-size: 13px;
+.contact-method {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--white);
+    display: grid;
+    gap: 10px;
+    padding: 22px 0;
+}
+
+.contact-method span {
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 12px;
     font-weight: 900;
-    letter-spacing: 0.08em;
-    margin-top: 8px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
-.partner-form input,
-.partner-form select,
-.partner-form textarea {
-    appearance: none;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    color: var(--black);
-    font: inherit;
-    min-height: 54px;
-    padding: 0 16px;
-    width: 100%;
-}
-
-.partner-form textarea {
-    line-height: 1.6;
-    min-height: 140px;
-    padding: 14px 16px;
-    resize: vertical;
-}
-
-.partner-form input:focus,
-.partner-form select:focus,
-.partner-form textarea:focus {
-    border-color: var(--red);
-    outline: 2px solid rgba(223, 23, 27, 0.16);
-}
-
-.form-honeypot {
-    display: none;
-}
-
-.partner-form button {
-    margin-top: 18px;
-}
-
-.partner-form button:disabled {
-    cursor: wait;
-    opacity: 0.72;
-}
-
-.form-status {
-    color: var(--muted);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.5;
-    min-height: 22px;
-}
-
-.form-status[data-state="success"] {
-    color: #146c2e;
-}
-
-.form-status[data-state="error"] {
-    color: var(--red-dark);
+.contact-method strong {
+    color: var(--white);
+    font-size: clamp(19px, 2vw, 26px);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
 }
 
 footer {
@@ -568,9 +528,9 @@ footer {
     .hero,
     .split,
     .red-panel,
-    .partners,
+    .business,
     .contact,
-    .partner-hero {
+    .contact-hero {
         grid-template-columns: 1fr;
     }
 
@@ -583,7 +543,7 @@ footer {
         max-width: 380px;
     }
 
-    .partner-hero {
+    .contact-hero {
         padding-top: 128px;
     }
 

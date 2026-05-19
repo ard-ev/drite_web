@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="sq">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt | Dritë Guide</title>
+    <meta name="description" content="Kontakto Dritë Guide për bashkëpunime, biznese lokale dhe pyetje të përgjithshme." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="img/png" href="./img/logo1.png">
+</head>
+
+<body class="contact-page">
+    <header class="navbar">
+        <a class="brand logo-brand" href="index.html" aria-label="Dritë Guide home">
+            <img src="./img/logo1.png" alt="Dritë Guide logo" />
+        </a>
+
+        <nav aria-label="Primary navigation">
+            <a href="index.html#about" data-i18n="navAbout">Rreth nesh</a>
+            <a href="index.html#why" data-i18n="navWhy">Pse Shqipëria</a>
+            <a href="index.html#business" data-i18n="navBusiness">Biznese</a>
+            <a href="index.html#contact" data-i18n="navContact">Kontakt</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="lang-switch" type="button" aria-label="Switch language" data-lang-toggle>
+                <span data-lang-label>EN</span>
+            </button>
+            <a class="nav-btn" href="index.html" data-i18n="backButton">Kthehu</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="contact-copy reveal">
+                <p class="eyebrow" data-i18n="pageEyebrow">Kontakt për biznese</p>
+                <h1 data-i18n="pageTitle">Flasim direkt.</h1>
+                <p class="lead" data-i18n="pageLead">
+                    Nëse ke një biznes në Shqipëri dhe dëshiron të flasësh me Dritë Guide, na kontakto me të dhënat më poshtë.
+                </p>
+            </div>
+
+            <div class="contact-details reveal delay-1" aria-label="Dritë Guide contact details">
+                <a class="contact-method" href="mailto:info@driteguide.com">
+                    <span data-i18n="emailLabel">Email</span>
+                    <strong>info@driteguide.com</strong>
+                </a>
+                <a class="contact-method" href="https://www.driteguide.com">
+                    <span data-i18n="websiteLabel">Website</span>
+                    <strong>www.driteguide.com</strong>
+                </a>
+                <a class="contact-method" href="https://www.instagram.com/driteguide">
+                    <span data-i18n="instagramLabel">Instagram</span>
+                    <strong>@driteguide</strong>
+                </a>
+                <div class="contact-method">
+                    <span data-i18n="locationLabel">Vendndodhja</span>
+                    <strong data-i18n="locationValue">Shqipëri</strong>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span data-i18n="footerBrand">© 2026 Dritë Guide</span>
+        <span data-i18n="footerLine">Ndiq dritën tënde.</span>
+    </footer>
+
+    <script>
+        const translations = {
+            sq: {
+                navAbout: "Rreth nesh",
+                navWhy: "Pse Shqipëria",
+                navBusiness: "Biznese",
+                navContact: "Kontakt",
+                backButton: "Kthehu",
+                pageEyebrow: "Kontakt për biznese",
+                pageTitle: "Flasim direkt.",
+                pageLead: "Nëse ke një biznes në Shqipëri dhe dëshiron të flasësh me Dritë Guide, na kontakto me të dhënat më poshtë.",
+                emailLabel: "Email",
+                websiteLabel: "Website",
+                instagramLabel: "Instagram",
+                locationLabel: "Vendndodhja",
+                locationValue: "Shqipëri",
+                footerBrand: "© 2026 Dritë Guide",
+                footerLine: "Ndiq dritën tënde."
+            },
+            en: {
+                navAbout: "About",
+                navWhy: "Why Albania",
+                navBusiness: "Businesses",
+                navContact: "Contact",
+                backButton: "Back",
+                pageEyebrow: "Business contact",
+                pageTitle: "Let’s talk directly.",
+                pageLead: "If you have a business in Albania and want to speak with Dritë Guide, contact us using the details below.",
+                emailLabel: "Email",
+                websiteLabel: "Website",
+                instagramLabel: "Instagram",
+                locationLabel: "Location",
+                locationValue: "Albania",
+                footerBrand: "© 2026 Dritë Guide",
+                footerLine: "Follow your light."
+            }
+        };
+
+        const languageButton = document.querySelector("[data-lang-toggle]");
+        const languageLabel = document.querySelector("[data-lang-label]");
+
+        function setLanguage(language) {
+            document.documentElement.lang = language === "sq" ? "sq" : "en";
+            document.querySelectorAll("[data-i18n]").forEach((element) => {
+                const key = element.dataset.i18n;
+                element.textContent = translations[language][key];
+            });
+            languageLabel.textContent = language === "sq" ? "EN" : "SQ";
+            localStorage.setItem("drite-language", language);
+        }
+
+        languageButton.addEventListener("click", () => {
+            const nextLanguage = document.documentElement.lang === "sq" ? "en" : "sq";
+            setLanguage(nextLanguage);
+        });
+
+        setLanguage(localStorage.getItem("drite-language") || "sq");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.18 });
+
+        document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    </script>
+</body>
+
+</html>
