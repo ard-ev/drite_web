@@ -157,13 +157,18 @@ nav a:hover {
     align-items: center;
     display: grid;
     gap: clamp(36px, 6vw, 90px);
-    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-    min-height: 100vh;
+    grid-template-columns: minmax(0, 1fr);
+    isolation: isolate;
+    min-height: 92vh;
     padding: 130px clamp(20px, 5vw, 72px) 72px;
+    position: relative;
 }
 
 .hero-copy {
+    color: var(--white);
     max-width: 760px;
+    position: relative;
+    z-index: 2;
 }
 
 .eyebrow {
@@ -209,6 +214,10 @@ h2 {
     max-width: 650px;
 }
 
+.hero .lead {
+    color: rgba(255, 255, 255, 0.88);
+}
+
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -216,23 +225,56 @@ h2 {
     margin-top: 34px;
 }
 
-.hero-mark {
-    align-items: center;
-    aspect-ratio: 1;
+.hero .btn {
+    border-color: rgba(255, 255, 255, 0.78);
+    color: var(--white);
+}
+
+.hero .btn.primary {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--black);
+}
+
+.hero .btn.primary:hover {
     background: var(--red);
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    margin-inline: auto;
-    max-width: 540px;
+    border-color: var(--red);
+    color: var(--white);
+}
+
+.hero .btn.ghost:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.hero-mark {
+    inset: 0;
     overflow: hidden;
-    width: min(100%, 540px);
+    position: absolute;
+    transform: none;
+    transition: none;
+    z-index: -2;
+}
+
+.hero-mark.reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.hero-mark::after {
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.48) 42%, rgba(0, 0, 0, 0.2) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0.08) 44%, rgba(0, 0, 0, 0.42) 100%);
+    content: "";
+    inset: 0;
+    position: absolute;
 }
 
 .hero-mark img {
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center 42%;
     width: 100%;
 }
 
@@ -518,11 +560,6 @@ footer {
         padding-top: 118px;
     }
 
-    .hero-mark {
-        justify-self: start;
-        max-width: 380px;
-    }
-
     .contact-hero {
         padding-top: 128px;
     }
@@ -578,7 +615,7 @@ footer {
     }
 
     .hero {
-        min-height: auto;
+        min-height: 84vh;
         padding-bottom: 54px;
     }
 
