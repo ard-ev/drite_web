@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email u verifikua | Drite Guide</title>
-    <meta name="description" content="Email-i yt u verifikua me sukses ne Drite Guide." />
+    <title>Email Verified | Drite Guide</title>
+    <meta name="description" content="Your email was verified successfully in Drite Guide." />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="img/png" href="./img/logo1.png">
@@ -22,79 +22,28 @@
                 <span></span>
             </div>
 
-            <p class="eyebrow" data-i18n="pageEyebrow">Email i verifikuar</p>
-            <h1 id="verify-title" data-i18n="pageTitle">Email-i yt u konfirmua.</h1>
-            <p class="lead" data-i18n="pageLead">
-                Faleminderit. Llogaria jote eshte gati dhe tani mund te vazhdosh me Drite Guide.
+            <p class="eyebrow" data-verify-eyebrow>Email verified</p>
+            <h1 id="verify-title" data-verify-title>Your email is confirmed.</h1>
+            <p class="lead" data-verify-lead>
+                Thank you. Your account is ready, and you can now continue with Drite Guide.
             </p>
 
             <div class="verify-actions">
-                <a class="btn primary" href="index.html" data-i18n="continueButton">Vazhdo</a>
-                <button class="lang-switch" type="button" aria-label="Switch language" data-lang-toggle>
-                    <span data-lang-label>EN</span>
-                </button>
+                <a class="btn primary" href="index.html">Confirm</a>
             </div>
-
-            <p class="verify-note" data-i18n="pageNote">
-                Nese e hape kete faqe pa klikuar linkun e verifikimit, kthehu te email-i dhe provo perseri.
-            </p>
         </section>
     </main>
 
     <script>
-        const translations = {
-            sq: {
-                pageEyebrow: "Email i verifikuar",
-                pageTitle: "Email-i yt u konfirmua.",
-                pageLead: "Faleminderit. Llogaria jote eshte gati dhe tani mund te vazhdosh me Drite Guide.",
-                continueButton: "Vazhdo",
-                pageNote: "Nese e hape kete faqe pa klikuar linkun e verifikimit, kthehu te email-i dhe provo perseri.",
-                errorEyebrow: "Verifikimi nuk u krye",
-                errorTitle: "Linku nuk mund te verifikohej.",
-                errorLead: "Linku mund te kete skaduar ose te jete perdorur me pare. Kerko nje email te ri verifikimi dhe provo perseri."
-            },
-            en: {
-                pageEyebrow: "Email verified",
-                pageTitle: "Your email is confirmed.",
-                pageLead: "Thank you. Your account is ready, and you can now continue with Drite Guide.",
-                continueButton: "Continue",
-                pageNote: "If you opened this page without clicking the verification link, return to the email and try again.",
-                errorEyebrow: "Verification failed",
-                errorTitle: "The link could not be verified.",
-                errorLead: "The link may have expired or already been used. Request a new verification email and try again."
-            }
-        };
-
-        const languageButton = document.querySelector("[data-lang-toggle]");
-        const languageLabel = document.querySelector("[data-lang-label]");
         const params = new URLSearchParams(window.location.search);
         const hasError = params.has("error") || params.has("error_description");
 
-        function setLanguage(language) {
-            const selectedLanguage = language === "sq" ? "sq" : "en";
-            const content = translations[selectedLanguage];
-            document.documentElement.lang = selectedLanguage;
-
-            document.querySelector("[data-i18n='pageEyebrow']").textContent = hasError ? content.errorEyebrow : content.pageEyebrow;
-            document.querySelector("[data-i18n='pageTitle']").textContent = hasError ? content.errorTitle : content.pageTitle;
-            document.querySelector("[data-i18n='pageLead']").textContent = hasError ? content.errorLead : content.pageLead;
-            document.querySelector("[data-i18n='continueButton']").textContent = content.continueButton;
-            document.querySelector("[data-i18n='pageNote']").textContent = content.pageNote;
-
-            languageLabel.textContent = selectedLanguage === "sq" ? "EN" : "SQ";
-            localStorage.setItem("drite-language", selectedLanguage);
-        }
-
         if (hasError) {
             document.body.classList.add("verify-error");
+            document.querySelector("[data-verify-eyebrow]").textContent = "Verification failed";
+            document.querySelector("[data-verify-title]").textContent = "The link could not be verified.";
+            document.querySelector("[data-verify-lead]").textContent = "The link may have expired or already been used. Request a new verification email and try again.";
         }
-
-        languageButton.addEventListener("click", () => {
-            const nextLanguage = document.documentElement.lang === "sq" ? "en" : "sq";
-            setLanguage(nextLanguage);
-        });
-
-        setLanguage(localStorage.getItem("drite-language") || "sq");
 
         requestAnimationFrame(() => {
             document.querySelector(".reveal").classList.add("is-visible");

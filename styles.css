@@ -498,7 +498,7 @@ a.contact-method:hover {
 
 .verify-page {
     background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.42) 52%, rgba(0, 0, 0, 0.18) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.5) 100%),
         url("./img/albo.jpg") center 42% / cover no-repeat;
     min-height: 100vh;
 }
@@ -506,17 +506,22 @@ a.contact-method:hover {
 .verify-shell {
     align-items: center;
     display: grid;
+    justify-items: center;
     min-height: 100vh;
     padding: clamp(28px, 5vw, 72px);
 }
 
 .verify-panel {
+    align-items: center;
     color: var(--white);
-    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    max-width: 620px;
+    text-align: center;
 }
 
 .verify-logo {
-    margin-bottom: clamp(42px, 7vw, 78px);
+    margin-bottom: clamp(34px, 6vw, 62px);
 }
 
 .verify-status {
@@ -568,6 +573,8 @@ a.contact-method:hover {
 
 .verify-panel .lead {
     color: rgba(255, 255, 255, 0.86);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .verify-actions {
@@ -575,6 +582,7 @@ a.contact-method:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
+    justify-content: center;
     margin-top: 34px;
 }
 
@@ -588,25 +596,6 @@ a.contact-method:hover {
     background: var(--red);
     border-color: var(--red);
     color: var(--white);
-}
-
-.verify-actions .lang-switch {
-    border-color: rgba(255, 255, 255, 0.72);
-    color: var(--white);
-}
-
-.verify-actions .lang-switch:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: var(--white);
-}
-
-.verify-note {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.65;
-    margin-top: 28px;
-    max-width: 560px;
 }
 
 footer {
