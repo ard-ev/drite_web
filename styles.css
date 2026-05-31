@@ -509,6 +509,7 @@ a.contact-method:hover {
     justify-items: center;
     min-height: 100vh;
     padding: clamp(28px, 5vw, 72px);
+    text-align: center;
 }
 
 .verify-panel {
@@ -516,59 +517,17 @@ a.contact-method:hover {
     color: var(--white);
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
     max-width: 620px;
     text-align: center;
+    width: min(100%, 620px);
 }
 
 .verify-logo {
-    margin-bottom: clamp(34px, 6vw, 62px);
-}
-
-.verify-status {
     align-items: center;
-    background: var(--white);
-    border-radius: 50%;
     display: flex;
-    height: 74px;
     justify-content: center;
-    margin-bottom: 28px;
-    width: 74px;
-}
-
-.verify-status span {
-    border-bottom: 5px solid var(--red);
-    border-left: 5px solid var(--red);
-    display: block;
-    height: 20px;
-    transform: rotate(-45deg) translate(2px, -2px);
-    width: 36px;
-}
-
-.verify-error .verify-status span {
-    border: 0;
-    height: 36px;
-    position: relative;
-    transform: none;
-    width: 36px;
-}
-
-.verify-error .verify-status span::before,
-.verify-error .verify-status span::after {
-    background: var(--red);
-    content: "";
-    height: 5px;
-    left: 0;
-    position: absolute;
-    top: 15px;
-    width: 36px;
-}
-
-.verify-error .verify-status span::before {
-    transform: rotate(45deg);
-}
-
-.verify-error .verify-status span::after {
-    transform: rotate(-45deg);
+    margin: 0 auto clamp(34px, 6vw, 62px);
 }
 
 .verify-panel .lead {
