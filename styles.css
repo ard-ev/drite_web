@@ -590,6 +590,10 @@ a.contact-method:hover {
     outline: 3px solid rgba(223, 23, 27, 0.42);
 }
 
+.reset-form input[aria-invalid="true"] {
+    border-color: #ffb7b9;
+}
+
 .reset-form button:disabled {
     cursor: not-allowed;
     opacity: 0.58;
