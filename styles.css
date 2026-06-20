@@ -557,6 +557,70 @@ a.contact-method:hover {
     color: var(--white);
 }
 
+.reset-form {
+    display: grid;
+    gap: 12px;
+    margin-top: 34px;
+    max-width: 420px;
+    text-align: left;
+    width: 100%;
+}
+
+.reset-form label {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.reset-form input {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 8px;
+    color: var(--black);
+    font: inherit;
+    min-height: 52px;
+    padding: 0 16px;
+    width: 100%;
+}
+
+.reset-form input:focus {
+    border-color: var(--white);
+    outline: 3px solid rgba(223, 23, 27, 0.42);
+}
+
+.reset-form button:disabled {
+    cursor: not-allowed;
+    opacity: 0.58;
+}
+
+.reset-form input:disabled {
+    opacity: 0.58;
+}
+
+.reset-form button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.reset-message {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-top: 18px;
+    max-width: 420px;
+}
+
+.reset-message[data-status="error"] {
+    color: #ffb7b9;
+}
+
+.reset-message[data-status="success"] {
+    color: #c5f2d0;
+}
+
 footer {
     align-items: center;
     background: var(--black);
