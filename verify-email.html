@@ -7,6 +7,9 @@
     <title>Email Verified | Drite Guide</title>
     <meta name="description" content="Your email was verified successfully in Drite Guide." />
     <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; upgrade-insecure-requests" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="img/png" href="./img/logo1.png">
 </head>
@@ -29,22 +32,7 @@
             </div>
         </section>
     </main>
-
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const hasError = params.has("error") || params.has("error_description");
-
-        if (hasError) {
-            document.body.classList.add("verify-error");
-            document.querySelector("[data-verify-eyebrow]").textContent = "Verification failed";
-            document.querySelector("[data-verify-title]").textContent = "The link could not be verified.";
-            document.querySelector("[data-verify-lead]").textContent = "The link may have expired or already been used. Request a new verification email and try again.";
-        }
-
-        requestAnimationFrame(() => {
-            document.querySelector(".reveal").classList.add("is-visible");
-        });
-    </script>
+    <script src="verify-email.js" defer></script>
 </body>
 
 </html>
